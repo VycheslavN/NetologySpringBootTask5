@@ -9,14 +9,14 @@ import ru.netology.systemProfile.SystemProfile;
 
 @Configuration
 public class JavaConfiguration {
-    @Bean
-    @ConditionalOnProperty(value = "netology.profile.dev", havingValue = "true")
+    @Bean(name = "devProfile")
+    @ConditionalOnProperty(prefix = "netology", name = "profile.dev", havingValue = "true", matchIfMissing = true)
     public SystemProfile devProfile() {
         return new DevProfile();
     }
 
-    @Bean
-    @ConditionalOnProperty(value = "netology.profile.dev", havingValue = "false")
+    @Bean(name = "prodProfile")
+    @ConditionalOnProperty(prefix = "netology", name = "profile.dev", havingValue = "false")
     public SystemProfile prodProfile() {
         return new ProductionProfile();
     }
