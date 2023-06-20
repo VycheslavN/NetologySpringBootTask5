@@ -1,7 +1,0 @@
-version: '1'
-
-services:
-  app1:
-    image: 'app'
-    ports:
-      - '8080'
